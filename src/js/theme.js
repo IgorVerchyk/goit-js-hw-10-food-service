@@ -7,12 +7,12 @@ const themeSwitch = document.querySelector('.js-switch-input');
 const savedTheme = localStorage.getItem('theme');
 
 themeSwitch.addEventListener('change', setTheme);
-function changeThemeForDark() {
+function changeThemeToDark() {
   pageBody.classList.remove(Theme.LIGHT);
   localStorage.setItem('theme', Theme.DARK);
   pageBody.classList.add(Theme.DARK);
 }
-function changeThemeForLight() {
+function changeThemeToLight() {
   pageBody.classList.remove(Theme.DARK);
   localStorage.setItem('theme', Theme.LIGHT);
   pageBody.classList.add(Theme.LIGHT);
@@ -20,9 +20,9 @@ function changeThemeForLight() {
 
 function setTheme(event) {
   if (event.target.checked) {
-    changeThemeForDark();
+    changeThemeToDark();
   } else {
-    changeThemeForLight();
+    changeThemeToLight();
   }
 }
 
