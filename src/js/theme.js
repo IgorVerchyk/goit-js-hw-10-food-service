@@ -7,22 +7,18 @@ const themeSwitch = document.querySelector('.js-switch-input');
 const savedTheme = localStorage.getItem('theme');
 
 themeSwitch.addEventListener('change', setTheme);
-function changeThemeToDark() {
-  pageBody.classList.remove(Theme.LIGHT);
-  localStorage.setItem('theme', Theme.DARK);
-  pageBody.classList.add(Theme.DARK);
-}
-function changeThemeToLight() {
-  pageBody.classList.remove(Theme.DARK);
-  localStorage.setItem('theme', Theme.LIGHT);
-  pageBody.classList.add(Theme.LIGHT);
+
+function changeTheme(oldTheme, newTheme) {
+  pageBody.classList.remove(oldTheme);
+  localStorage.setItem('theme', newTheme);
+  pageBody.classList.add(newTheme);
 }
 
 function setTheme(event) {
   if (event.target.checked) {
-    changeThemeToDark();
+    changeTheme(Theme.LIGHT, Theme.DARK);
   } else {
-    changeThemeToLight();
+    changeTheme(Theme.DARK, Theme.LIGHT);
   }
 }
 
@@ -31,8 +27,6 @@ export function checkForTheme() {
     pageBody.classList.add(savedTheme);
     if (savedTheme === Theme.DARK) {
       themeSwitch.checked = true;
-    } else {
-      ('');
     }
   }
 }
